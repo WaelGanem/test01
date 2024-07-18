@@ -1,0 +1,12 @@
+name: action01
+description: My FIrst Ever Custom Action
+inputs:
+  fullname: 'My Full Name'
+  required: true
+  default: 'Wael Ghanem'
+outputs:
+  greeting:
+    description: 'My Greeting'
+runs:
+  using: 'node20'
+  main: index.js
