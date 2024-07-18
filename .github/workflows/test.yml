@@ -16,6 +16,6 @@ jobs:
               with:
                 greet_name: "Shakib"
             - name:
-              run: echo "My greeting message:" + ${{steps.step02.outputs.greeting}}
+              run: echo "My greeting message:" + ${{steps.step02.outputs.greet_name}}
 
 
