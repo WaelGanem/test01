@@ -12,7 +12,7 @@ jobs:
               uses: actions/checkout@v4
             - name: step02
               id: step02
-              uses: ./.github/actions/action1
+              uses: ./.github/actions/action01
             - name:
               run: echo "My greeting message:" + ${{steps.step02.outputs.greeting}}
 
