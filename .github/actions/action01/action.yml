@@ -1,5 +1,5 @@
 name: action01
-description: My FIrst Ever Custom Action
+description: My First Ever Custom Action
 inputs:
   fullname: 'My Full Name'
   required: true
