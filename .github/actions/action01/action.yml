@@ -1,9 +1,10 @@
 name: action01
 description: My First Ever Custom Action
 inputs:
-  fullname: 'My Full Name'
-  required: true
-  default: 'Wael Ghanem'
+  fullname: 
+    description: 'My Full Name'
+    required: true
+    default: 'Wael Ghanem'
 outputs:
   greeting:
     description: 'My Greeting'

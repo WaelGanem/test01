@@ -8,7 +8,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: step 01
+            - name: step01
               uses: actions/checkout@v4
             - name: step02
               id: step02
