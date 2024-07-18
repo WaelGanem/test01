@@ -15,16 +15,14 @@ name: Cron Job Example
 # |       0 0 * * *                           |
 # +-------------------------------------------+
 
-# on:
-#   schedule:                 <-- to schedule every 5 minutes
-#     - cron: '*/5 * * * *'
-
 on:
   schedule:
     # Example cron expressions:
     # - '0 0 * * *'   # Run every day at midnight UTC
     # - '15 3 * * *'  # Run every day at 3:15 AM UTC
     # - '0 */6 * * *' # Run every 6 hours
+    # - '*/5 * * * *' <-- to schedule every 5 minutes
+
     - cron: '*/5 * * * *'  # Run every day at midnight UTC
 
 jobs:
