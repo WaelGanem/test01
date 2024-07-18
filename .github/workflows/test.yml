@@ -1,29 +1,73 @@
-name: "Workflow 01"
+name: Cron Job Example
 
-on: 
-    push:
-        branches: [main]
+# +-------------------------------------------+
+# |          GitHub Actions Cron Job          |
+# |                                           |
+# |    Schedule: 0 0 * * * (Every midnight)   |
+# |                                           |
+# |       ┌───────────── Minute (0 - 59)      |
+# |       │ ┌───────────── Hour (0 - 23)      |
+# |       │ │ ┌───────────── Day of month     |
+# |       │ │ │ ┌───────────── Month (1-12)   |
+# |       │ │ │ │ ┌───────────── Day of week  |
+# |       │ │ │ │ │                           |
+# |       │ │ │ │ │                           |
+# |       0 0 * * *                           |
+# +-------------------------------------------+
+
+# on:
+#   schedule:                 <-- to schedule every 5 minutes
+#     - cron: '*/5 * * * *'
+
+on:
+  schedule:
+    # Example cron expressions:
+    # - '0 0 * * *'   # Run every day at midnight UTC
+    # - '15 3 * * *'  # Run every day at 3:15 AM UTC
+    # - '0 */6 * * *' # Run every 6 hours
+    - cron: '*/5 * * * *'  # Run every day at midnight UTC
 
 jobs:
-  job1:
+  cron_job:
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+
     steps:
-      - id: step1
-        run: echo "test=Wael" >> "$GITHUB_OUTPUT"
-      - id: step2
-        run: echo "test=Ghanem" >> "$GITHUB_OUTPUT"
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - env:
-          OUTPUT1: ${{needs.job1.outputs.output1}}
-          OUTPUT2: ${{needs.job1.outputs.output2}}
-        run: echo "$OUTPUT1 $OUTPUT2"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Add your job steps here
+      - name: Run Your Cron Job
+        run: |
+          echo "Running cron job"
+          # Add your actual cron job commands here
+
+
+# name: "Workflow 01"
+
+# on: 
+#     push:
+#         branches: [main]
+
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+#     # Map a step output to a job output
+#     outputs:
+#       output1: ${{ steps.step1.outputs.test }}
+#       output2: ${{ steps.step2.outputs.test }}
+#     steps:
+#       - id: step1
+#         run: echo "test=Wael" >> "$GITHUB_OUTPUT"
+#       - id: step2
+#         run: echo "test=Ghanem" >> "$GITHUB_OUTPUT"
+#   job2:
+#     runs-on: ubuntu-latest
+#     needs: job1
+#     steps:
+#       - env:
+#           OUTPUT1: ${{needs.job1.outputs.output1}}
+#           OUTPUT2: ${{needs.job1.outputs.output2}}
+#         run: echo "$OUTPUT1 $OUTPUT2"
 
 # jobs:
 #     build:
